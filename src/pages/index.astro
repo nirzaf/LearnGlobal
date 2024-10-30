@@ -1,0 +1,199 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { SubjectCard } from '../components/SubjectCard';
+import TestimonialCard from '../components/TestimonialCard.astro';
+import WhyUsCard from '../components/WhyUsCard.astro';
+import PayAsYouGo from '../components/PayAsYouGo.astro';
+import ExamBoardsCarousel from '../components/ExamBoardsCarousel.astro';
+import { LevelTabs } from '../components/LevelTabs';
+
+const subjects = [
+  { name: 'Mathematics', icon: '📐' },
+  { name: 'Physics', icon: '⚡' },
+  { name: 'Chemistry', icon: '🧪' },
+  { name: 'Biology', icon: '🧬' },
+  { name: 'English', icon: '📚' },
+  { name: 'Computer Science', icon: '💻' },
+];
+
+const whyUsFeatures = [
+  {
+    icon: 'https://ik.imagekit.io/studytomy/highly_safe_tutors_with_police_clearance_certificate?updatedAt=1717855231835',
+    text: 'Highly Safe Tutors with Police Clearance Certificate (PCC)',
+    alt: 'Child Safety Icon'
+  },
+  {
+    icon: 'https://ik.imagekit.io/studytomy/1_to_1_online_tutoring_with_flexible_schedules?updatedAt=1717855335273',
+    text: '1 to 1 Online Tutoring with flexible schedules',
+    alt: 'Interview Icon'
+  },
+  {
+    icon: 'https://ik.imagekit.io/studytomy/unique_accounts_for_each_student_to_ensure_privacy?updatedAt=1717855414994',
+    text: 'Unique accounts for each student to ensure privacy',
+    alt: 'Profile Icon'
+  },
+  {
+    icon: 'https://ik.imagekit.io/studytomy/customized_time_according_to_your_preference?updatedAt=1717855483552',
+    text: 'Customized time according to your preference',
+    alt: 'Clock Icon'
+  },
+  {
+    icon: 'https://ik.imagekit.io/studytomy/graduate_tutors_with_excellent_experience?updatedAt=1717855559491',
+    text: 'Graduate tutors with excellent experience',
+    alt: 'Graduation Hat Icon'
+  },
+  {
+    icon: 'https://ik.imagekit.io/studytomy/past_papers_and_revision_papers_are_provided?updatedAt=1717855652900',
+    text: 'Past papers and revision papers are provided',
+    alt: 'Exam Icon'
+  }
+];
+
+const testimonials = [
+  {
+    name: 'Sarah Johnson',
+    image: '/testimonials/sarah.jpg',
+    text: 'LearnGlobal helped me achieve an A* in my A-Level Mathematics. The tutors are exceptional!',
+    subject: 'Mathematics',
+    examBoard: 'Edexcel'
+  },
+  {
+    name: 'James Chen',
+    image: '/testimonials/james.jpg',
+    text: 'The personalized attention and flexible scheduling made a huge difference in my studies.',
+    subject: 'Physics',
+    examBoard: 'Cambridge'
+  },
+];
+---
+
+<Layout title="Home">
+  <main class="overflow-hidden">
+    <!-- Hero Section -->
+    <section class="relative min-h-[85vh] flex items-center justify-center bg-gradient-to-b from-gray-50 via-white to-gray-50">
+      <div class="absolute inset-0 bg-grid-pattern opacity-5"></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div class="text-center space-y-8">
+          <h1 class="text-5xl md:text-6xl lg:text-7xl font-montserrat font-bold mb-6">
+            <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary via-orange-500 to-primary animate-gradient-x">
+              Expert Tutoring
+            </span>
+            <br />
+            <span class="text-secondary">
+              for Global Success
+            </span>
+          </h1>
+          <p class="text-xl md:text-2xl text-gray-700 max-w-2xl mx-auto leading-relaxed">
+            Connect with qualified tutors worldwide and achieve your academic goals
+          </p>
+          <div class="flex flex-col sm:flex-row justify-center gap-6 mt-12">
+            <a
+              href="/contact"
+              class="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white bg-primary rounded-xl overflow-hidden shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+            >
+              <span class="relative z-10">Book Free Trial</span>
+              <div class="absolute inset-0 bg-gradient-to-r from-orange-600 to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div class="absolute inset-0 w-1/4 bg-white/20 skew-x-[45deg] group-hover:animate-shine"></div>
+            </a>
+            <a
+              href="/exam-boards"
+              class="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-primary border-2 border-primary rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl hover:bg-primary/5"
+            >
+              <span class="relative z-10">View Exam Boards</span>
+              <div class="absolute inset-0 w-1/4 bg-primary/10 skew-x-[45deg] group-hover:animate-shine"></div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Study Levels Section -->
+    <section class="py-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-montserrat font-bold text-center text-secondary mb-12">
+          Choose Your Level
+        </h2>
+        <LevelTabs client:load />
+      </div>
+    </section>
+
+    <!-- Subjects Section -->
+    <section class="py-12 bg-gradient-to-b from-white to-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-montserrat font-bold text-center text-secondary mb-12">
+          Our Subjects
+        </h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+          {subjects.map(subject => <SubjectCard client:load {...subject} />)}
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Us Section -->
+    <section class="py-12 bg-gradient-to-b from-gray-50 to-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-montserrat font-bold text-center text-secondary mb-12">
+          Why Choose Us?
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {whyUsFeatures.map(feature => <WhyUsCard {...feature} />)}
+        </div>
+      </div>
+    </section>
+
+    <!-- Pay As You Go Section -->
+    <PayAsYouGo />
+
+    <!-- Exam Boards Carousel -->
+    <ExamBoardsCarousel />
+
+    <!-- Testimonials Section -->
+    <section class="py-12 bg-gradient-to-b from-white to-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-montserrat font-bold text-center text-secondary mb-12">
+          Student Success Stories
+        </h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          {testimonials.map(testimonial => <TestimonialCard {...testimonial} />)}
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  @keyframes shine {
+    from {
+      transform: translateX(-100%) skew(-45deg);
+    }
+    to {
+      transform: translateX(200%) skew(-45deg);
+    }
+  }
+
+  .animate-shine {
+    animation: shine 2s infinite;
+  }
+
+  @keyframes gradient-x {
+    0%, 100% {
+      background-size: 200% 100%;
+      background-position: left center;
+    }
+    50% {
+      background-size: 200% 100%;
+      background-position: right center;
+    }
+  }
+
+  .animate-gradient-x {
+    animation: gradient-x 8s ease infinite;
+  }
+
+  .bg-grid-pattern {
+    background-image: 
+      linear-gradient(to right, #00000008 1px, transparent 1px),
+      linear-gradient(to bottom, #00000008 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+</style>

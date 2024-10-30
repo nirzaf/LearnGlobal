@@ -1,0 +1,31 @@
+---
+import '@fontsource/lato';
+import '@fontsource/montserrat';
+import '../styles/globals.css';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Global e-learning platform connecting students with qualified tutors" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title} | LearnGlobal</title>
+  </head>
+  <body class="font-lato">
+    <Navbar />
+    <slot />
+    <Footer />
+  </body>
+</html>
