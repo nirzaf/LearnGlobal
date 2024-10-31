@@ -3,9 +3,8 @@ import tailwind from '@astrojs/tailwind';
 import react from '@astrojs/react';
 
 export default defineConfig({
-  site: 'https://dotnetevangelist.com',
+  site: 'https://dotnetevangelist.com/LearnGlobal/',
   trailingSlash: 'never',
-  base:'/LearnGlobal/',
   integrations: [tailwind({
     applyBaseStyles: false
   }), react()],
