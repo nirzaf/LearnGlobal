@@ -20,7 +20,7 @@ export function SubjectCard({ name, icon }: SubjectCardProps) {
   return (
     <HoverCard>
       <HoverCardTrigger>
-        <div className="bg-white p-6 rounded-lg shadow-md text-center hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 cursor-pointer">
+        <div className="w-full min-h-[150px] bg-white p-6 rounded-lg shadow-md text-center hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 cursor-pointer flex flex-col justify-center">
           <div className="text-4xl mb-4 animate-bounce-subtle">{icon}</div>
           <h3 className="font-montserrat font-semibold text-secondary">{name}</h3>
         </div>
